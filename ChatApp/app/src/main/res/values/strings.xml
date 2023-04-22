@@ -10,4 +10,7 @@
     <string name="name">name</string>
     <string name="confirm_password">Confirm password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="last_name">last name</string>
+    <string name="code">code</string>
+    <string name="hola">Hola:</string>
 </resources>

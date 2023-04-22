@@ -53,12 +53,13 @@ public class SignUpActivity extends AppCompatActivity {
                 signUp();
             }
         });
+        /*
         binding.layoutImage.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             pickImage.launch(intent);
         });
-
+*/
     }
 
     private void showToast(String message){
@@ -70,9 +71,11 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String,Object> user = new HashMap<>();
         user.put(Constants.KEY_NAME,binding.inputName.getText().toString());
+        user.put(Constants.KEY_LASTNAME,binding.inputLastName.getText().toString());
+        user.put(Constants.KEY_CODE,binding.inputCode.getText().toString());
         user.put(Constants.KEY_EMAIL,binding.inputEmail.getText().toString());
         user.put(Constants.KEY_PASSWORD,binding.inputPassword.getText().toString());
-        user.put(Constants.KEY_IMAGE,encodedImage);
+        //user.put(Constants.KEY_IMAGE,encodedImage);
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)
                 .addOnSuccessListener(documentReference -> {
@@ -80,8 +83,8 @@ public class SignUpActivity extends AppCompatActivity {
                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
                     preferenceManager.putString(Constants.KEY_USER_ID,documentReference.getId());
                     preferenceManager.putString(Constants.KEY_NAME,binding.inputName.getText().toString());
-                    preferenceManager.putString(Constants.KEY_IMAGE,encodedImage);
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    //preferenceManager.putString(Constants.KEY_IMAGE,encodedImage);
+                    Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 })
@@ -100,7 +103,7 @@ public class SignUpActivity extends AppCompatActivity {
         byte[] bytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(bytes, Base64.DEFAULT);
     }
-
+/*
     private final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -121,7 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
     );
-
+*/
     private Boolean isValidSignUpDetails(){
         /*
         if(encodedImage == null){
@@ -130,6 +133,14 @@ public class SignUpActivity extends AppCompatActivity {
         }*/
         if(binding.inputName.getText().toString().trim().isEmpty()){
             showToast("Enter name");
+            return false;
+        }
+        else if(binding.inputLastName.getText().toString().trim().isEmpty()){
+            showToast("Enter last name");
+            return false;
+        }
+        else if(binding.inputCode.getText().toString().trim().isEmpty()){
+            showToast("Enter code");
             return false;
         }
         else if(binding.inputEmail.getText().toString().trim().isEmpty()){
