@@ -116,7 +116,7 @@ public class ChatActivity extends AppCompatActivity {
             }
             binding.chatRecyclerView.setVisibility(View.VISIBLE);
         }
-
+        binding.progressBar.setVisibility(View.GONE);
     };
 
     private void loadReceiverDetails(){
