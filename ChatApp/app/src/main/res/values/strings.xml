@@ -13,4 +13,7 @@
     <string name="last_name">last name</string>
     <string name="code">code</string>
     <string name="hola">Hola:</string>
+    <string name="log_out">log out</string>
+    <string name="select_user">Select user</string>
+    <string name="type_a_message">type a message</string>
 </resources>

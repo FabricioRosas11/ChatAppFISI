@@ -5,27 +5,28 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
     <TextView
         android:id="@+id/textMessage"
         android:layout_width="285dp"
         android:layout_height="53dp"
         android:padding="@dimen/_12sdp"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/white"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textDateTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textMessage"
         android:layout_width="285dp"
         android:layout_height="53dp"
-        android:textColor="@color/secondary_text"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textColor="@color/white"
         android:textSize="@dimen/_10ssp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="53dp" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textMessage"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
